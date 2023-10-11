@@ -1,0 +1,131 @@
+---
+title: "Rworksheet_Legaspi3a.R"
+output:
+pdf_document: default
+html_document: default
+date: "2023-10-07"
+---
+  
+#USING VECTORS
+```{r no1a}
+eleven_letters <- LETTERS[1:11]
+eleven_letters
+```
+
+```{r no1b}
+odd_numbered<-LETTERS[seq(1,25,2)]
+odd_numbered
+```
+
+```{r no1c}
+vector_vowels<-c(letters[(letters %in% c ("a","e","i","o","u"))], LETTERS [(LETTERS %in% c("A","E","I","O","U"))])
+vector_vowels
+
+```
+
+```{r no1d}
+lastfiveletters<-tail(letters,5)
+lastfiveletters
+
+```
+
+```{r no1e}
+letterbetween15to24_letters<-letters[15:24]
+letterbetween15to24_letters
+```
+
+```{r 2a}
+city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+```
+
+```{r 2b}
+temp <- c(42, 39, 34, 34, 30, 27)
+temp
+```
+
+```{r 2c}
+df<-data.frame(city,temp)
+df
+```
+
+```{r 2d}
+names(df) <- c("City", "Temperature")
+df
+```
+
+```{r 2e}
+str(df)
+
+```
+
+```{r 2f}
+df[3:4,]
+```
+
+```{r 2g}
+highest_temp_city<-df$City[which.max(df$Temperature)]
+lowest_temp_city<-df$City[which.min(df$Temperature)]
+highest_temp_city
+lowest_temp_city
+```
+
+#USING MATRIX
+
+```{r matrix2a}
+m1<-matrix(c(1:8,11:14),ncol=4,nrow=3)
+m1
+
+```
+
+```{r matrix2b}
+matrix(c(1:8,11:14),ncol=4,nrow=3) * 2
+
+```
+
+```{r m2c}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[2,]
+
+```
+
+```{r m2d}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[1:2,c(3,4)]
+```
+
+```{r m2e}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[3, c(2,3)]
+```
+
+```{r m2f}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[,4]
+```
+
+```{r m2g}
+m2<-matrix(c(1:8,11:14),ncol=4,nrow=3) * 2
+rownames(m2) <- c("isa", "dalawa", "tatlo")
+colnames(m2) <- c("uno", "dos", "tres", "quatro")
+m2
+```
+
+```{r m2h}
+dim(m1)<- c(6,2)
+m1
+```
+
+#USING ARRAYS
+
+```{r a3a}
+values<-c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+array3d<- array(values, dim = c(2, 4, 3))
+array3d
+values
+```
+
+```{r a3b}
+#The array has three dimensions
+```
+
+```{r a3c}
+dimnames(array3d) <- list(c ("a","b"), LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array") )
+array3d
+```
