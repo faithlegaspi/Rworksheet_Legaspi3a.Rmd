@@ -1,0 +1,35 @@
+#1. The table below shows the data about shoe size and height. Create a data frame.
+#A. Describe the data.
+
+shoe_data <- data.frame(ShoeSize <- c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 12.0, 10.5), Height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0))
+shoe_data
+
+#B. Create a subset by males and females with their corresponding shoe size and height. What its result? Show the R scripts.
+
+gender <- c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M", "F", "M", "M")
+shoe <- cbind(shoe_data, gender)
+shoe
+
+#C. Find the mean of shoe size and height of the respondents. Write the R scripts and its result.
+mean(ShoeSize)
+mean(Height)
+
+#D. Is there a relationship between shoe size and height? Why?
+
+#2.
+Months <- c("March", "April", "January", "November", "January", "September", "October", "September", "November", "August", "January", "November", "November", "Febuary", "May", "August")
+Months
+factor_months <- factor(Months)
+factor_months
+
+#3.
+summary(Months)
+summary(factor_months)
+
+#4. 
+frequency_data <- data.frame(Direction <- c("East", "West", "North"), Frenquency <- c(1,4,3))
+frequency_data
+frequency_data_factor <- factor(frequency_data)
+new_order_data <- factor(frequency_data_factor, levels = c("East", "West", "North"))
+new_order_data
+print(new_order_data)
