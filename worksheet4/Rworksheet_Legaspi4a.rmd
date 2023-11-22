@@ -1,35 +1,161 @@
 #1. The table below shows the data about shoe size and height. Create a data frame.
 #A. Describe the data.
-
-shoe_data <- data.frame(ShoeSize <- c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 12.0, 10.5), Height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0))
-shoe_data
-
+``` {r number1}
+df <- data.frame (
+  Shoe_size = c(6.5, 9.0, 8.5, 8.5, 10.0, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0), 
+  Height = c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0),
+  Gender = c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M",
+             "F", "M", "M", "M", "M", "F", "F", "M", "F", "F", "M", "M", "F", "M", "M", "M", "M")
+)
+df
+```
 #B. Create a subset by males and females with their corresponding shoe size and height. What its result? Show the R scripts.
 
-gender <- c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M", "F", "M", "M")
-shoe <- cbind(shoe_data, gender)
-shoe
+``` {r number1b}
+male.subset <- df[df$Gender == "M", c("Shoe_size", "Height")]
+female.subset <- df[df$Gender == "F", c("Shoe_size", "Height")]
+male.subset
+female.subset
+```
+#c. Find the mean of shoe size and height of the respondents. Write the R scripts and its result.
+``` {r number1c}
+mean(df$Shoe_size)
+mean(df$Height)
+```
+#D.
+#Yes, there is a relationship between the height and shoe size, the taller they are, the longer their shoe size.
 
-#C. Find the mean of shoe size and height of the respondents. Write the R scripts and its result.
-mean(ShoeSize)
-mean(Height)
-
-#D. Is there a relationship between shoe size and height? Why?
-
-#2.
-Months <- c("March", "April", "January", "November", "January", "September", "October", "September", "November", "August", "January", "November", "November", "Febuary", "May", "August")
-Months
-factor_months <- factor(Months)
-factor_months
-
-#3.
+#Number2
+``` {r number2}
+Months <- c("March","April","January","November","January",
+"September","October","September","November","August",
+"January","November","November","February","May","August",
+"July","December","August","August","September","November","February", "April")
+factor.months <- factor(Months)
+factor.months
+```
+#3
+``` {r number3}
 summary(Months)
-summary(factor_months)
+summary(factor.months)
+```
+#4
+``` {r number4}
+DirectionVector <- c("East", "West", "North")
+FrequencyVector <- c(1, 1, 3)
+FactorData <- factor(c(DirectionVector, FrequencyVector))
+NewOrderData <- factor(FactorData,levels = 
+                c("East", "West", "North"))
+print(NewOrderData)
+```
+#5
+``` {r number5}
+student.table <- read.table(file = 'import_march.csv', header = TRUE, sep = ',')
+student.table
 
-#4. 
-frequency_data <- data.frame(Direction <- c("East", "West", "North"), Frenquency <- c(1,4,3))
-frequency_data
-frequency_data_factor <- factor(frequency_data)
-new_order_data <- factor(frequency_data_factor, levels = c("East", "West", "North"))
-new_order_data
-print(new_order_data)
+```
+
+#6.
+``` {r num6}
+random.num <- sample(1:50, 1)
+
+cat("The chosen number is:", random.num, "\n")
+
+if (random.num == 20) {
+  cat("TRUE\n")
+} else if (random.num < 1 || random.num > 50) {
+  cat("The number selected is beyond the range of 1 to 50\n")
+} else {
+  cat(random.num, "\n")
+}
+```
+#7.
+``` {r num7}
+calculate.min.bills <- function(price.of.snack) {
+  bill.denominations <- c(1000, 500, 200, 100, 50)
+  total.bills <- 0
+  
+  for (bill in bill.denominations) {
+    num.bills.needed <- price.of.snack %/% bill
+    price.of.snack <- price.of.snack %% bill
+    total.bills <- total.bills + num.bills.needed
+  }
+  
+  cat("Minimum number of bills needed to purchase the snack:", total.bills, "\n")
+}
+
+price.of.snack <- 1350
+calculate.min.bills(price.of.snack)
+```
+#8.
+#A.
+``` {r num8a}
+students <- data.frame(
+  Name = c("Annie" , "Thea", "Steve", "Hanna"),
+  Grade1 = c(85,65,75,95),
+  Grade2 = c(65,75,55,75),
+  Grade3 = c(85,90,80,100),
+  Grade4 = c(100,90,85,90)
+)
+students
+```
+#B.
+``` {r num8b}
+students$Average <- (students$Grade1 + students$Grade2 + students$Grade3 + students$Grade4) / 4
+
+for (i in 1:nrow(students)) {
+  average <- (students$Grade1[i] + students$Grade2[i] + students$Grade3[i] + students$Grade4[i]) / 4
+  count <- 0
+  total_average <- 0
+  if (students$Grade4[i] > 90) {
+    cat(students$Name[i], "'s average grade this semester is", average, ".\n")
+    total.average <- total.average + average
+    count <- count + 1
+  }
+}
+
+if (count > 0) {
+  overall.average <- total.average / count
+  cat("The overall average for high-achieving students is", overall.average, ".\n")
+} else {
+  cat("No high-achieving students found.\n")
+}
+```
+#C.
+``` {r num8c}
+testONE_average <- sum(students$Grade1) / nrow(students)
+testTWO_average <- sum(students$Grade2) / nrow(students)
+testTHREE_average <- sum(students$Grade3) / nrow(students)
+testFOUR_average <- sum(students$Grade4) / nrow(students)
+
+if (testONE_average < 80) {
+  cat("The 1st test was difficult.\n")
+}
+if (testTWO_average < 80) {
+  cat("The 2nd test was difficult.\n")
+}
+if (testTHREE_average < 80) {
+  cat("The 3rd test was difficult.\n")
+}
+if (testFOUR_average < 80) {
+  cat("The 4th test was difficult.\n")
+}
+```
+#D.
+``` {r num8d}
+for (i in 1:nrow(students)) {
+  highest.grade <- students$Grade1[i]
+  if (students$Grade2[i] > highest.grade) {
+    highest.grade <- students$Grade2[i]
+  }
+  if (students$Grade3[i] > highest.grade) {
+    highest.grade <- students$Grade3[i]
+  }
+  if (students$Grade4[i] > highest.grade) {
+    highest.grade <- students$Grade4[i]
+  }
+  if (highest.grade > 90) {
+    cat(students$Name[i], "'s highest grade this semester is", highest.grade, "\n")
+  }
+}
+```
